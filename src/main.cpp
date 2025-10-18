@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <math.h>
+#include "input.hpp"
 
 sf::RectangleShape spawnPlayer() {
     sf::RectangleShape player;
@@ -36,10 +37,22 @@ void displayWindow() {
 
 }
 
-
+//Next get keyboard inputs and updating position to player
 
 int main()
 {
     displayWindow();
-    return 0;
+   
+
+
+    //Initial based concept. I may need a inturrpt or something like that to stop the while loop for a second to update my postion
+
+    // using cin for game inputs on second guess may not be the best idea.
+    char input;
+    std::cin >> input;
+
+    std::cout << input;
+ return 0;
+
+
 }
