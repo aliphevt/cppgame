@@ -1,17 +1,10 @@
-#ifndef INPUT_HPP
-#define INPUT_HPP
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <math.h>
-#include "input.hpp"
+#pragma once
 #include <SFML/Window/Keyboard.hpp>
 
-class Input {
-public:
-    sf::Keyboard::Key getKeyPress();
-    void inputHandler();
-private:
-    std::string m_name; 
+struct InputState {
+    float move;   // -1 left, 0 idle, 1 right
+    bool jump;
+    bool dash;
 };
 
-#endif // MY_CLASS_HPP
+InputState pollInput();

@@ -1,45 +1,20 @@
 #include "input.hpp"
 
-
-sf::Keyboard::Key getKeyPress() {
-	sf::Event event;
-
-	sf::Keyboard::Key Key;
-	while (window.pollEvent(event)) {
-		if (event.type == sf::Event::KeyPressed) {
-
-			Key = event.key.code;
-
-		}
-	}
-	Return Key;
+static bool key(sf::Keyboard::Key k) {
+    return sf::Keyboard::isKeyPressed(k);
 }
 
+InputState pollInput() {
+    InputState input{};
+    input.move = 0.f;
+    input.jump = false;
+    input.dash = false;
 
-void inputHandler() {
-	getKeyPress();
-	if (key == sf::Keyboard::W) {
+    if (key(sf::Keyboard::Key::A)) input.move -= 1.f;
+    if (key(sf::Keyboard::Key::D)) input.move += 1.f;
 
+    input.jump = key(sf::Keyboard::Key::Space);
+    input.dash = key(sf::Keyboard::Key::LShift);
 
-	}
-	else if (key == sf::Keyboard::S) {
-
-
-
-	}
-	else if (key == sf::Keyboard::A) {
-
-
-
-	}
-	else if (key == sf::Keyboard::D) {
-
-
-
-
-
-	}
-
-
-
+    return input;
 }
